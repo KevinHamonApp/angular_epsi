@@ -31,16 +31,17 @@ export class HeroService {
       return this.heros.slice(0,4);
     }
 
-    getHero(id: number): Hero | undefined{
-      return this.heros.find(
-          (h: Hero) => h.id == id
-        );
+    getHero(id: number): Observable<Hero[]>{
+      const headers= new HttpHeaders().set("apikey", environment.api.key)
+      return this.httpClient.get<Hero[]>(
+          environment.api.urlRest+'Hero?id=eq.'+id, {'headers':headers}
+        )
     }
 
     getTable(): Observable<Hero[]>{
       const headers= new HttpHeaders().set("apikey", environment.api.key)
       return this.httpClient.get<Hero[]>(
-          environment.api.url+'Hero', {'headers':headers}
+          environment.api.urlRest+'Hero', {'headers':headers}
         )
     }
 }

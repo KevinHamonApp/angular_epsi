@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 import { Hero } from 'src/app/models/Hero'
 import { HeroService } from 'src/app/services/hero.service';
 
@@ -9,15 +10,19 @@ import { HeroService } from 'src/app/services/hero.service';
 })
 export class HeroesComponent implements OnInit {
 
-  heroes: Hero[] = [];
+  heroes: Observable<Hero[]> = new Observable();
   
   constructor(private heroService: HeroService){
   }
 
   ngOnInit(): void {
-    this.heroService.getTable().subscribe(
-      (data) => this.heroes=data
-    );
+    this.heroes=this.heroService.getTable();
+  }
+
+  maFonction(): void{
+    this.heroes.subscribe(
+      (data) => console.log(data)
+    )
   }
 
 

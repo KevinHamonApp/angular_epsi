@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 import { Hero } from 'src/app/models/Hero';
 import { HeroService } from 'src/app/services/hero.service';
 
@@ -16,7 +17,16 @@ export class DetailsHeroComponent implements OnInit{
 
   ngOnInit(): void {
     this.route.params.subscribe(
-      (params) => this.hero=this.heroService.getHero(params['id'])
+      (params) => {
+        this.heroService.getHero(params['id']).subscribe(
+          (data)=> {
+            if(data.length>0){
+              this.hero=data[0]
+            }
+            
+          }
+        )
+      }
     )
     
   }

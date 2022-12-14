@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './public/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LogFormComponent } from './components/log-form/log-form.component';
+import { BackofficeComponent } from './protected/backoffice/backoffice.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LogFormComponent } from './components/log-form/log-form.component';
     ItemHerosComponent,
     LayoutComponent,
     LoginComponent,
-    LogFormComponent
+    LogFormComponent,
+    BackofficeComponent
   ],
   imports: [
     BrowserModule,

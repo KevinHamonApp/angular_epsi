@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-log-form',
@@ -7,16 +9,26 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./log-form.component.scss']
 })
 export class LogFormComponent {
-  profileForm = new FormGroup({
-    email: new FormControl('', Validators.email),
-    password: new FormControl('', Validators.required)
-  });
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.email, Validators.required]),
+    password: new FormControl('', [Validators.required])
+  })
 
-  @Output() submit: EventEmitter<any> = new EventEmitter();
+  constructor(private userService: UserService, private router:Router){}
 
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.profileForm.value);
-    this.submit.emit(this.profileForm.value);
+  onSubmit(){
+    console.log(this.loginForm.value);
+    let credentials = {...this.loginForm.value};
+    this.userService.login(credentials).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.userService.setLogin();
+        this.router.navigateByUrl('/admin')
+      }, 
+      error: (error) => {
+        console.log(error)
+      }
+  })
   }
+  
 }
