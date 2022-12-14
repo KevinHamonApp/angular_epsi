@@ -1,0 +1,11 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+    <label for="email">email: </label>
+    <input id="email" type="email" formControlName="email">
+  
+    <label for="password">password: </label>
+    <input id="password" type="password" formControlName="password">
+
+    <input value="Se connecter" type="submit" [disabled]="!profileForm.valid"/>
+  
+</form>

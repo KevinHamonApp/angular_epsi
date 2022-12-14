@@ -1,0 +1,6 @@
+<div *ngIf="hero">
+    <h1>{{ hero.name | uppercase }} details</h1>
+    <p>{{ hero.id }}</p>
+    <p>{{hero.name | lowercase}}</p>
+</div>
+<p *ngIf="!hero">Aucun héros n'a été trouvé pour cet id.</p>

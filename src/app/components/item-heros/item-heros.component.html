@@ -1,0 +1,6 @@
+<li>
+    <a [routerLink]="['/hero',hero.id]">
+        <span class="id" [ngClass]="{'pair': hero.id%2 == 0, 'impair': hero.id%2 !=0 }">{{ hero.id }}</span>
+        <span class="label">{{ hero.name }}</span>
+    </a>
+</li>
