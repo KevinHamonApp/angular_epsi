@@ -1,27 +1,27 @@
-# MyApp
+# Cahier des charges 
+un projet Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.3.
+un espace public :
+- une page accessible publiquement présentant du contenu variable (des posts, des articles, des produits, …)
+- une page descriptive pour chaque contenu
+- une page d’authentification 
 
-## Development server
+un espace back-office
+- vue dashboard avec des statistiques
+- vue liste des éléments de contenus front
+- un formulaire d’ajout et d’édition de ces éléments
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Pour la gestion de la BDD et de l’authentification, on se basera sur un outil cloud
+Vous pouvez utiliser un framework CSS/ un kit UI
 
-## Code scaffolding
+# Critères d'évaluation
+- respect du cahier des charges 
+- réutilisation des notions Angular
+- qualité globale du rendu
+	  expérience fluide
+	  prise en compte de tous les cas utilisateurs
+- qualité du code
+      propreté du projet
+      architecture du code
+      efficacité du code
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

@@ -14,7 +14,7 @@ export class LogFormComponent {
     password: new FormControl('', [Validators.required])
   })
 
-  constructor(private userService: UserService, private router:Router){}
+  constructor(private userService: UserService, private router:Router){ }
 
   onSubmit(){
     console.log(this.loginForm.value);
