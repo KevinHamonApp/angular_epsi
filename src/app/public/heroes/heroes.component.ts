@@ -16,13 +16,7 @@ export class HeroesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.heroes=this.heroService.getTable();
-  }
-
-  maFonction(): void{
-    this.heroes.subscribe(
-      (data) => console.log(data)
-    )
+    this.heroes=this.heroService.getHeroes();
   }
 
 

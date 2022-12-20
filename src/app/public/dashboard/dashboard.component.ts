@@ -16,12 +16,7 @@ export class DashboardComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    //this.heros = this.heroService.getTopHeroes();
-    this.heros$=this.heroService.getTable()
-    /*
-    .subscribe(
-      (data) => this.heros=data
-    );*/
+    this.heros$=this.heroService.getLimitHeroes(0,3);
   }
   
 

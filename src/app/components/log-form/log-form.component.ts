@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
@@ -9,26 +9,21 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./log-form.component.scss']
 })
 export class LogFormComponent {
+
+  @Output() credentials = new EventEmitter<{email?: string | null | undefined, password?: string | null | undefined}>();
+
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [Validators.required])
   })
 
-  constructor(private userService: UserService, private router:Router){ }
+  constructor(){ }
 
   onSubmit(){
     console.log(this.loginForm.value);
     let credentials = {...this.loginForm.value};
-    this.userService.login(credentials).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.userService.setLogin();
-        this.router.navigateByUrl('/admin')
-      }, 
-      error: (error) => {
-        console.log(error)
-      }
-  })
+    this.credentials.emit(credentials);
+    
   }
   
 }

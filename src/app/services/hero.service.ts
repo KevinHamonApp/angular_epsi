@@ -23,12 +23,18 @@ export class HeroService {
 
   constructor(private httpClient: HttpClient) { }
 
-    getHeroes(): Hero[]{
-      return this.heros;
+    getHeroes(): Observable<Hero[]>{
+      const headers= new HttpHeaders().set("apikey", environment.api.key)
+      return this.httpClient.get<Hero[]>(
+          environment.api.urlRest+'Hero', {'headers':headers}
+        )
     }
 
-    getTopHeroes(): Hero[]{
-      return this.heros.slice(0,4);
+    getLimitHeroes(min:number, max:number): Observable<Hero[]>{
+      let headers= new HttpHeaders().set("apikey", environment.api.key).set("Range", min+"-"+max)
+      return this.httpClient.get<Hero[]>(
+          environment.api.urlRest+'Hero', {'headers':headers}
+        )
     }
 
     getHero(id: number): Observable<Hero[]>{

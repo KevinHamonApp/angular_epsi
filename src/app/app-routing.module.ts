@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BackofficeComponent } from './protected/backoffice/backoffice.component';
+import { AdminLayoutComponent } from './protected/layout/layout.component';
 import { DashboardComponent } from './public/dashboard/dashboard.component';
 import { DetailsHeroComponent } from './public/details-hero/details-hero.component';
 import { HeroesComponent } from './public/heroes/heroes.component';
@@ -15,7 +16,9 @@ const routes: Routes = [
     { path: 'hero/:id', component: DetailsHeroComponent},
     { path: 'login', component: LoginComponent},
   ]},
-  { path: 'admin', component: BackofficeComponent, canActivate: [AuthGuard]},
+  { path: 'admin', component: AdminLayoutComponent, canActivate: [AuthGuard], children: [
+    { path: '', component: BackofficeComponent},
+  ]},
   
 ];
 
